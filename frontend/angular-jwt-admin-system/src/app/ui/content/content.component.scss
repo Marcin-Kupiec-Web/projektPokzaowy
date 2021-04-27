@@ -1,0 +1,30 @@
+
+ .content {
+    margin-left: 200px;    
+    margin-top:49px;
+    transition: 0.5s;
+}
+#inContent{
+      padding: 10px 20px 10px 20px;
+      min-height: 100vh; 
+  }  
+
+  @media screen and (max-width: 600px) {
+
+    .content {margin-left: 0;}
+    
+      .content.responsiveContent, .content.responsiveContent *{
+         z-index:0;
+         transition: 0s;
+     }
+    .content.responsiveContent{
+        width: 100%;
+        z-index: 0;
+    }
+}
+ @media screen and (min-width: 600px) {
+ 
+    .content.responsiveContent{
+         margin-left:0;
+     }
+}

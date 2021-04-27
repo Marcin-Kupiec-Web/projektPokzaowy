@@ -1,0 +1,20 @@
+<div class="loginPage">
+<div class="topnav p-shadow-5">  
+    <button pButton pRipple type="button" icon="pi pi-home" label="Wróć" class="p-button-secondary m-1" routerLink="/start">
+    </button>
+</div>
+<div class="p-d-flex p-flex-column p-shadow-2 loginPanel" >
+    <form [formGroup]="signin">
+            <span class="p-float-label">
+                <input placeholder="login" class="w-100 " type="text" pInputText [(ngModel)]="username" 
+                        formControlName="username"> 
+            </span>
+            <span class="p-float-label  mt-3">
+                <input placeholder="hasło" class="w-100" type="password" pInputText [(ngModel)]="password" 
+                        formControlName="password"> 
+            </span>
+            <button pButton pRipple type="button" label="Loguj" class="p-button-secondary mt-3 w-100 p-button-lg"
+                    (click)="onLogin()" [disabled]="!signin.valid"></button>
+    </form>
+</div>
+</div> 

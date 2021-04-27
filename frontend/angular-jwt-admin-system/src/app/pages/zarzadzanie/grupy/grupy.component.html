@@ -1,0 +1,90 @@
+<p-toast></p-toast>
+
+<div class="card">
+    <p-toolbar styleClass="p-mb-4">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="Nowy" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()"></button>
+            <button pButton pRipple  icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedGroups()" [disabled]="!selectedGroups || !selectedGroups.length"></button>
+        </ng-template>
+    </p-toolbar>
+  
+    <p-table #dt [value]="groups" [rows]="10" [paginator]="true" 
+    [globalFilterFields]="['id','name','privilegesString','poziomUprawnien']"
+        [(selection)]="selectedGroups" [rowHover]="true" dataKey="id" [loading]="loading"
+        currentPageReportTemplate="{first} z {last} / {totalRecords}" [showCurrentPageReport]="true"
+        styleClass="p-datatable-responsive-my">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex">
+                <button pButton  class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt)"></button>
+                <span class="p-input-icon-left p-ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" [(ngModel)]="search" (input)="dt.filterGlobal($event.target.value, 'contains')" 
+                            placeholder="Wpisz" style="width:100%"/>
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="id" style="width:100px">Id <p-sortIcon field="id"></p-sortIcon></th>
+                <th pSortableColumn="name">Nazwa <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="shortName">Skróc. nazwa <p-sortIcon field="shortName"></p-sortIcon></th>
+                <th pSortableColumn="description">Opis <p-sortIcon field="description"></p-sortIcon></th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-group>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="group"></p-tableCheckbox>
+                </td>
+                <td><span class="p-column-title">Id</span> {{group.id}}</td>
+                <td><span class="p-column-title">Nazwa</span> {{group.name}}</td>
+                <td><span class="p-column-title">Skróc. nawa</span> {{group.shortName}}</td>
+                <td><span class="p-column-title">Opis</span> {{group.description}}</td>
+                <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" 
+                    (click)="editGroup(group)"></button>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" 
+                    (click)="deleteGroup(group)"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                Liczba wyników: {{groups ? groups.length : 0 }}
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+
+<p-dialog [(visible)]="groupDialog"  header="Edycja grupy" [modal]="true" 
+styleClass="p-fluid respDialog" [contentStyle]="{ height:'350px'}" [formGroup]="groupForm" >
+    <ng-template pTemplate="content" >
+        <div class="p-field">
+            <label for="name">Nazwa * </label>
+            <input type="text" pInputText id="name" [(ngModel)]="group.name" required autofocus 
+            formControlName="groupName"/>
+        </div>
+        <div class="p-field">
+            <label for="shortName">Skróc. nazwa * </label>
+            <input type="text" pInputText id="shortName" [(ngModel)]="group.shortName" required 
+            formControlName="groupShortName"/>
+        </div>
+        <div class="p-field">
+            <label for="description">Opis</label>
+            <textarea pInputTextarea id="descryption"  [(ngModel)]="group.description"
+            formControlName="groupDescription"></textarea>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text"
+        [disabled]="!groupForm.valid" (click)="saveGroup()"></button>
+        <p-button icon="pi pi-check" (click)="groupDialog=false; groupForm.reset()" label="Ok" styleClass="p-button-text"></p-button>
+    </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+

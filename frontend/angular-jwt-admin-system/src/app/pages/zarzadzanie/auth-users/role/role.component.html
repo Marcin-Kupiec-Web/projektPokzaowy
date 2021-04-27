@@ -1,0 +1,91 @@
+<p-toast></p-toast>
+
+<div class="card">
+    <p-toolbar styleClass="p-mb-4">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="Nowy" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()"></button>
+            <button pButton pRipple  icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedRoles()" [disabled]="!selectedRoles || !selectedRoles.length"></button>
+        </ng-template>
+    </p-toolbar>
+  
+    <p-table #dt [value]="roles" [rows]="10" [paginator]="true" 
+    [globalFilterFields]="['id','name','privilegesString','poziomUprawnien']"
+        [(selection)]="selectedRoles" [rowHover]="true" dataKey="id" [loading]="loading"
+        currentPageReportTemplate="{first} z {last} / {totalRecords}" [showCurrentPageReport]="true"
+        styleClass="p-datatable-responsive-my">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex">
+                <button pButton  class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt)"></button>
+                <span class="p-input-icon-left p-ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" [(ngModel)]="search" (input)="dt.filterGlobal($event.target.value, 'contains')" 
+                            placeholder="Wpisz" style="width:100%"/>
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="id" style="width:100px">Id <p-sortIcon field="id"></p-sortIcon></th>
+                <th pSortableColumn="name">Nazwa <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="privilegesString">Uprawnienia <p-sortIcon field="privilegesString"></p-sortIcon></th>
+                <th pSortableColumn="poziomUprawnien">Poziom upr. <p-sortIcon field="poziomUprawnien"></p-sortIcon></th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rola>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="rola"></p-tableCheckbox>
+                </td>
+                <td><span class="p-column-title">Id</span> {{rola.id}}</td>
+                <td><span class="p-column-title">Nazwa</span> {{rola.name}}</td>
+                <td><span class="p-column-title">Uprawnienia</span> {{rola.privilegesString}}</td>
+                <td><span class="p-column-title">Poziom upr.</span> {{rola.poziomUprawnien}}</td>
+                <td>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" 
+                    (click)="editRola(rola)"></button>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" 
+                    (click)="deleteRola(rola)"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                Liczba wynków: {{roles ? roles.length : 0 }}
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+
+<p-dialog [(visible)]="rolaDialog"  header="Edycja roli" [modal]="true" 
+styleClass="p-fluid respDialog" [contentStyle]="{ height:'350px'}" [formGroup]="rolaForm" >
+    <ng-template pTemplate="content" >
+        <div class="p-field">
+            <label for="name">Nazwa * </label>
+            <input type="text" pInputText id="name" [(ngModel)]="rola.name" required autofocus 
+            formControlName="rolaName"/>
+        </div>
+        <div class="p-field">
+            <label for="privileges">Uprawnienia * </label>
+            <p-multiSelect [options]="privilegesSave" inputId="privileges" [(ngModel)]="rola.privileges"  
+                optionLabel="name" display="chip" formControlName="rolaPrvilege" required></p-multiSelect>
+        </div>
+        <div class="p-field">
+          <label for="minmax">Poziom uprawnień * </label>
+          <p-inputNumber [(ngModel)]="rola.poziomUprawnien" inputId="minmax" inputId="minmax" 
+          mode="decimal" [min]="1" [max]="10" formControlName="rolaPoziomUpr">
+          </p-inputNumber>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text"
+        [disabled]="!rolaForm.valid" (click)="saveRola()"></button>
+        <p-button icon="pi pi-check" (click)="rolaDialog=false; rolaForm.reset()" label="Ok" styleClass="p-button-text"></p-button>
+    </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+

@@ -1,0 +1,55 @@
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #8da6fa;
+    position: fixed;
+    top:50px;
+    height: 100%;
+    overflow: auto;
+    display: block;
+    z-index:99;
+    transition: 0.5s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 3px 1px 12px rgba(0, 0, 0, 0.03);
+}
+:host ::ng-deep .myClass.p-accordion {
+    .p-accordion-header:not(.p-disabled).p-highlight .p-accordion-header-link {
+        background: red;
+    }
+}
+.sidebar a {
+display: block;
+padding: 16px;
+text-decoration: none;
+}
+
+.sidebar a.active {
+background-color: #4CAF50;
+color: white;
+}
+
+.sidebar a:hover:not(.active) {
+color: crimson;
+}
+
+@media screen and (max-width: 600px) {
+    
+    .sidebar{width:0;}     
+
+    .sidebar.responsiveSidebar{
+            display: block;
+            width: 200px;
+            background-color: #047380;
+    }
+    .sidebar.responsiveSidebar a{
+        color:white
+    }
+   
+  
+}
+ @media screen and (min-width: 600px) {
+  .sidebar.responsiveSidebar{
+            width: 0px;
+    }
+  
+}
