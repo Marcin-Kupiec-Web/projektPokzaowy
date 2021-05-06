@@ -1,0 +1,111 @@
+:host ::ng-deep {
+    .p-dropdown {
+        width: 14rem;
+        font-weight: normal;
+    }
+    
+    .announcement-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+    
+    .announcement-description {
+        margin: 0 0 1rem 0;
+    }
+    
+    .announcement-category-icon {
+        vertical-align: middle;
+        margin-right: .5rem;
+        color: tomato;
+    }
+    
+    .announcement-category {
+        font-weight: 600;
+        vertical-align: middle;
+    }
+    
+    .announcement-list-item {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    
+        img {
+            width: 150px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            margin-right: 2rem;
+        }
+    
+        .announcement-list-detail {
+            flex: 1 1 0;
+        }
+    
+        .p-rating {
+            margin: 0 0 .5rem 0;
+        }
+    
+        .announcement-price {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: .5rem;
+            align-self: flex-end;
+        }
+    
+        .announcement-list-action {
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .p-button {
+            margin-bottom: .5rem;
+        }
+    }
+    .p-b-1{
+        border:1px solid whitesmoke;
+        border-radius: 3px;
+    }
+    .announcement-grid-item {
+        margin: .5em;
+        border: 1px solid #dee2e6;
+    
+        img {
+            width: 75%;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            margin: 2rem 0;
+        }
+    
+        .announcement-grid-item-content {
+            text-align: center;
+            min-height: 150px;
+            overflow: auto;
+        }
+    
+        .announcement-price {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+    }
+    .announcement-grid-item-top,
+        .announcement-item-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding:5px!important;
+            border-top: 1px dashed rgb(236, 234, 234);
+            font-size: smaller;
+        }
+}
+
+.card {
+    padding: 0;
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    margin-bottom: 2rem;
+    overflow: auto;
+}
+
+@media screen and (max-width: 876px) {
+    :host ::ng-deep .headerD {
+        flex-direction: column;
+        gap: 7px;
+    }
+}
