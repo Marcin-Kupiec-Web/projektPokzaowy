@@ -24,7 +24,7 @@ export class TopNavComponent implements OnInit {
       this.router.navigate(['/start']);
     }
 
-    hasRole(rola: string): boolean {
+    hasRole(rola: string[]): boolean {
       return this.authenticationService.hasRole(rola);
       }
 }

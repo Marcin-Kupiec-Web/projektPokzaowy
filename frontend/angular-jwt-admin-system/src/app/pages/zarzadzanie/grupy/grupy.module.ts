@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GrupyRoutingModule } from './grupy-routing.module';
-import { GrupyComponent } from './grupy.component';
+
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TableModule} from 'primeng/table';
 import { TranslateModule } from '@ngx-translate/core';
@@ -16,6 +16,7 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {InputTextareaModule} from 'primeng/inputtextarea';
+import { GrupyComponent } from './grupy.component';
 
 @NgModule({
   declarations: [GrupyComponent],

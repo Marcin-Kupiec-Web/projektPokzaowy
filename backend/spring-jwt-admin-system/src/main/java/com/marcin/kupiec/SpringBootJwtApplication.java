@@ -10,3 +10,4 @@ public class SpringBootJwtApplication {
 		SpringApplication.run(SpringBootJwtApplication.class, args);
 	}
 }
+

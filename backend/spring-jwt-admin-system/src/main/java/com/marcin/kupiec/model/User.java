@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
@@ -21,6 +22,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.annotations.Type;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  *
@@ -73,6 +76,10 @@ public class User implements Serializable {
 	@JoinColumn(name="id_grupa")
 	private Grupa grupa;
 	
+    @JsonIgnore
+    @OneToMany(mappedBy = "user",cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    private List<Announcements> announcementsCollection;
+	
     public User(String username, String password, String rola) {
     	this.password=password;
     	this.username=username;
@@ -119,7 +126,14 @@ public class User implements Serializable {
         this.roleCollection = roleCollection;
     }
 
-    @Override
+    public List<Announcements> getAnnouncementsCollection() {
+		return announcementsCollection;
+	}
+	public void setAnnouncementsCollection(List<Announcements> announcementsCollection) {
+		this.announcementsCollection = announcementsCollection;
+	}
+	
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
@@ -143,20 +157,23 @@ public class User implements Serializable {
     public String toString() {
         return "com.example.demo.User[ id=" + id + " ]";
     }
+    
 	public boolean isEnabled() {
 		return enabled;
 	}
+	
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
 	
-	
 	public Grupa getGrupa() {
 		return grupa;
 	}
+	
 	public void setGrupa(Grupa grupa) {
 		this.grupa = grupa;
 	}
+	
 	public String getRoleCollectionToString() {
 		String rcstr="";
 		for(Role rc:this.roleCollection){
@@ -165,6 +182,7 @@ public class User implements Serializable {
 		rcstr = rcstr.substring(0, rcstr.length() - 2);
 		return rcstr;
 	}
+	
 	public void setRoleCollectionToString(String roleCollectionToString) {
 		this.roleCollectionToString = roleCollectionToString;
 	}
@@ -172,6 +190,7 @@ public class User implements Serializable {
 	public void setGrupaToString(String grupaToString) {
 		this.grupaToString = grupaToString;
 	}
+	
 	public String getGrupaToString() {
 		
 		return this.grupa.getName();

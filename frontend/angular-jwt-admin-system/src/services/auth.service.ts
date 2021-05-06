@@ -63,9 +63,13 @@ export class AuthenticationService {
 
 // privileges
 
-hasRole(rola: string): boolean {
+hasRole(role: string[]): boolean {
   if (this.decodedToken != null) {
-    return this.decodedToken.role.find(rol => rol === rola) != null;
+    for (const i of role){
+       if (this.decodedToken.role.find(rol => rol === i) != null) {
+         return true;
+       }
+      }
     }
   return false;
 }

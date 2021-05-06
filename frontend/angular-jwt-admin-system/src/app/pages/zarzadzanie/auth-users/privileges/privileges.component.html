@@ -1,5 +1,5 @@
-<p-toast></p-toast>
-
+<p-toast position="bottom-center"></p-toast>
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
 <div class="card">
     <p-toolbar styleClass="p-mb-4">
         <ng-template pTemplate="left">
@@ -72,6 +72,4 @@ styleClass="p-fluid respDialog" [contentStyle]="{ height:'200px'}" [formGroup]="
         <p-button icon="pi pi-check" (click)="privilegeDialog=false; privilegeForm.reset()" label="Ok" styleClass="p-button-text"></p-button>
     </ng-template>
 </p-dialog>
-
-<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
 

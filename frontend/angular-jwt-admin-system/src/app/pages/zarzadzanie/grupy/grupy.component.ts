@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Inject } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ConfirmationService, PrimeNGConfig } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { TranslateService } from '@ngx-translate/core';
@@ -31,7 +31,7 @@ export class GrupyComponent implements OnInit {
               private translateService: TranslateService,
               private config: PrimeNGConfig,
               private authenticationService: AuthenticationService) {
-                this.authenticationService.redirectIfforbidenPage();
+                 this.authenticationService.redirectIfforbidenPage();
                }
 
   ngOnInit(): void {
@@ -91,7 +91,6 @@ saveGroup(): void {
         this.addGroup(this.group);
         this.messageService.add({severity: 'success', summary: 'Sukces', detail: 'Utworzono grupę.', life: 3000});
       }
-      this.groups = [...this.groups];
       this.groupDialog = false;
       this.group = new Grupa();
   }
@@ -104,6 +103,7 @@ saveGroup(): void {
         this.grupaService.addGrupa(grupa).subscribe(data => {
           this.groups.push(data);
           this.loading = false;
+          this.groups = [...this.groups];
         });
     }
   }

@@ -5,7 +5,8 @@
     min-width: 145px;
     height: 50px;
     top:0px;
-    background-color: #0097a7;
+    background-color: rgb(49, 73, 117);
+    background-color: var(--my-primary-color);
     z-index:2;
     transition:all 0.5s;
   }

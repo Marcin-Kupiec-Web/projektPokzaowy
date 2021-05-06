@@ -2,7 +2,8 @@
     margin: 0;
     padding: 0;
     width: 200px;
-    background-color: #8da6fa;
+    background-color: rgb(185, 174, 216);
+    background-color: var(--my-secondary-color);
     position: fixed;
     top:50px;
     height: 100%;
@@ -32,7 +33,7 @@ color: white;
 color: crimson;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 800px) {
     
     .sidebar{width:0;}     
 
@@ -47,7 +48,7 @@ color: crimson;
    
   
 }
- @media screen and (min-width: 600px) {
+ @media screen and (min-width: 800px) {
   .sidebar.responsiveSidebar{
             width: 0px;
     }

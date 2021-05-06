@@ -95,7 +95,6 @@ export class PrivilegesComponent implements OnInit, AfterViewChecked {
           this.messageService.add({severity: 'success', summary: 'Sukces', detail: 'Utworzono uprawnienie.', life: 3000});
         }
 
-        this.privileges = [...this.privileges];
         this.privilegeDialog = false;
         this.privilege = new Privilege();
     }
@@ -106,6 +105,7 @@ export class PrivilegesComponent implements OnInit, AfterViewChecked {
         this.loading = true;
         this.privilegesService.addPrivilege(privilege).subscribe(data => {
          this.privileges.push(data);
+         this.privileges = [...this.privileges];
          this.loading = false;
        });
    }

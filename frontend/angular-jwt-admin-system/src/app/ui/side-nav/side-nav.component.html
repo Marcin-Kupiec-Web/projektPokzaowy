@@ -1,6 +1,6 @@
 <div class="sidebar" id="mySidebar">
-  <p-panelMenu [transitionOptions]="'200ms'"  [model]="sideNawItems" [style]="{'width':'200px'}" *ngIf="hasRole('ADMIN')">
-    
+  <p-panelMenu [transitionOptions]="'200ms'"  [model]="sideNawItems" 
+  [style]="{'width':'200px'}" *ngIf="hasRole(['ADMIN'])">
   </p-panelMenu>
   
   </div>

@@ -12,7 +12,9 @@ children: [
   { path: 'users', loadChildren: () => import('./zarzadzanie/auth-users/users/users.module').then(m => m.UsersModule)},
   { path: 'groups', loadChildren: () => import('./zarzadzanie/grupy/grupy.module').then(m => m.GrupyModule)},
   { path: 'rejestry', loadChildren: () => import('./zarzadzanie/rejestry/rejestry.module').then(m => m.RejestryModule)},
+  { path: 'announcements', loadChildren: () => import('./announcements/announcements.module').then(m => m.AnnouncementsModule) },
 ]},
+
 ];
 
 @NgModule({

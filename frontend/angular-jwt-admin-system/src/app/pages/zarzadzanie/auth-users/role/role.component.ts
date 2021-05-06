@@ -111,7 +111,6 @@ export class RoleComponent implements OnInit, AfterViewChecked  {
             this.messageService.add({severity: 'success', summary: 'Sukces', detail: 'Utworzono rolę.', life: 3000});
           }
 
-          this.roles = [...this.roles];
           this.rolaDialog = false;
           this.rola = new Role();
       }
@@ -122,6 +121,7 @@ export class RoleComponent implements OnInit, AfterViewChecked  {
           this.loading = true;
           this.roleService.addRola(rola).subscribe(data => {
             this.roles.push(data);
+            this.roles = [...this.roles];
             this.loading = false;
           });
       }
