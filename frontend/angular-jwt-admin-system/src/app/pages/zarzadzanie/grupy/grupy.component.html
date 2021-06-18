@@ -47,9 +47,9 @@
                 <td><span class="p-column-title">Opis</span> {{group.description}}</td>
                 <td>
                     <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" 
-                    (click)="editGroup(group)"></button>
+                    (click)="editGroup(group)" [disabled]="group.name === 'admins'"></button>
                     <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" 
-                    (click)="deleteGroup(group)"></button>
+                    (click)="deleteGroup(group)" [disabled]="group.name === 'admins'"></button>
                 </td>
             </tr>
         </ng-template>

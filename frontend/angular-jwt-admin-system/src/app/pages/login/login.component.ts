@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Rejestry } from 'src/model/rejestry';
 import { AuthenticationService } from 'src/services/auth.service';
-import { RejestryService } from '../zarzadzanie/rejestry/rejestry.service';
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   constructor(private primengConfig: PrimeNGConfig,
               private router: Router,
               private authenticationService: AuthenticationService,
-              private rejestryService: RejestryService,
+              private location: Location,
               private fb: FormBuilder) { }
 
   ngOnInit(): void {

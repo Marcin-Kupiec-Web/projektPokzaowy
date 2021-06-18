@@ -46,7 +46,6 @@ export class UsersComponent implements OnInit, AfterViewChecked {
               private authenticationService: AuthenticationService,
               private rejestryService: RejestryService,
               private readonly changeDetectorRef: ChangeDetectorRef) {
-                this.authenticationService.redirectIfforbidenPage();
                 this.stateOptions = [{label: 'blokada', value: false}, {label: 'aktywny', value: true}];
                 this.rejestrySave = new RejestrySave(this.authenticationService, this.rejestryService);
   }

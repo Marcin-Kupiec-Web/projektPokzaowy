@@ -31,14 +31,9 @@ export class PrivilegesComponent implements OnInit, AfterViewChecked {
               private confirmationService: ConfirmationService,
               private translateService: TranslateService,
               private config: PrimeNGConfig,
-              private authenticationService: AuthenticationService,
               private readonly changeDetectorRef: ChangeDetectorRef
-              ) {
-                this.authenticationService.redirectIfforbidenPage();
-              }
-  ngAfterViewChecked(): void {
-                this.changeDetectorRef.detectChanges();
-              }
+              ) { }
+  ngAfterViewChecked(): void {}
   ngOnInit(): void {
         this.privilegesService.findAll().subscribe(data => {
         // tslint:disable-next-line:no-string-literal

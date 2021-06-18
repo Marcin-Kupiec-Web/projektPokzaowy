@@ -17,7 +17,7 @@ import com.marcin.kupiec.repository.RejestryRepository;
 
 @RestController
 @RequestMapping("/terminarz/restControllerAppRejestry")
-public class RejestryController {
+public class RejestryControllerRest {
 
     @Autowired
     private RejestryRepository repository;

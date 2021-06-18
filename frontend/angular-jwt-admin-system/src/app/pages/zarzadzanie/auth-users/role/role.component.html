@@ -47,9 +47,9 @@
                 <td><span class="p-column-title">Poziom upr.</span> {{rola.poziomUprawnien}}</td>
                 <td>
                     <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" 
-                    (click)="editRola(rola)"></button>
+                    (click)="editRola(rola)" [disabled]="rola.name === 'ADMIN'"></button>
                     <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" 
-                    (click)="deleteRola(rola)"></button>
+                    (click)="deleteRola(rola)" [disabled]="rola.name === 'ADMIN'"></button>
                 </td>
             </tr>
         </ng-template>

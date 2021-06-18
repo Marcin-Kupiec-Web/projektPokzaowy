@@ -33,7 +33,7 @@ export class AnnouncementsComponent implements OnInit {
 
   ngOnInit(): void {
     this.announcementsService.findAll().subscribe(data => {
-      setTimeout(() => {this.announcementsList = data; }, 500);
+      setTimeout(() => {this.announcementsList = data; }, 250);
 });
 
     this.announcementForm = new FormGroup({

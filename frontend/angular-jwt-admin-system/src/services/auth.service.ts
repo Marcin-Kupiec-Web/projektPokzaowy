@@ -16,7 +16,7 @@ export class AuthenticationService {
   // BASE_PATH: 'http://localhost:8081'
   USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
   USER_PASS_SESSION_ATTRIBUTE_NAME = 'authenticatedPass';
-  private decodedToken!: MyToken | null;
+  public decodedToken!: MyToken | null;
   private grandAuthor: any = {};
   private rejestrySave!: RejestrySave;
 
@@ -80,49 +80,9 @@ redirectIfforbidenPage(): void {
 }
 }
 
-checkGrdnded(): any {
-    if (this.enterForbiden() === false) {
-          return this.router.navigate(['/start']);
-    }
-
-}
-  enterForbiden(): boolean {
-
-    if (this.decodedToken) {
-   const rola = this.decodedToken.role;
-   const uprawnienia = this.decodedToken.privileges;
-   if (rola != null) {
-      if (this.grandAuthor[this.router.url] && this.grandAuthor[this.router.url].role !== null) {
-      for (const row of rola) {
-          for ( const row2 of this.grandAuthor[this.router.url].role) {
-            if (row === row2) {
-                return true;
-              }
-          }
-        }
-      }
-    }
-
-   if (uprawnienia != null) {
-      if (this.grandAuthor[this.router.url] && this.grandAuthor[this.router.url].uprawnienia !== null) {
-      for (const row of uprawnienia) {
-        for ( const privile of this.grandAuthor[this.router.url].uprawnienia) {
-         if (row === privile) {
-           return true;
-          }
-         }
-        }
-      }
-    }
-    }
-    return false;
-    }
-
     getDecodeToken(): any {
       const token = localStorage.getItem('access_token');
       const tokenDecode = token !== null ? jwt_decode<MyToken>(token) : null;
       return tokenDecode;
     }
-
-
 }

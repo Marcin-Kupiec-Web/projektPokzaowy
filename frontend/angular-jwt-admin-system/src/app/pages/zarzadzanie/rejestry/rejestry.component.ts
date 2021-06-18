@@ -18,11 +18,7 @@ loading = true;
   constructor(private rejestryService: RejestryService,
               private translateService: TranslateService,
               private config: PrimeNGConfig,
-              private authenticationService: AuthenticationService) {
-
-            this.authenticationService.redirectIfforbidenPage();
-
-  }
+              private authenticationService: AuthenticationService) {}
 
   ngOnInit(): void {
     this.translateLang('pl');
@@ -36,6 +32,7 @@ loading = true;
   clear(table: Table): void {
     this.search = null;
     table.clear();
+    table.filterGlobal(this.search, 'contains');
   }
     translateLang(lang: string): void {
     this.translateService.use(lang);

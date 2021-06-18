@@ -80,13 +80,17 @@ styleClass="p-fluid respDialog" [contentStyle]="{ height:'80vh'}" [formGroup]="u
     <ng-template pTemplate="content" >
         <div class="p-field">
             <label for="name">Nazwa</label>
-            <input type="text" pInputText id="name" [(ngModel)]="user.username" required autofocus 
-            formControlName="nameUser"/>
+            <input type="text" pInputText id="name" [(ngModel)]="user.username" 
+                    required autofocus 
+                    formControlName="nameUser"/>
         </div>
         <div class="p-field">
             <label for="haslo">Hasło * </label>
-            <input type="text" pInputText id="haslo" [(ngModel)]="user.password" required 
-            formControlName="passUser"/>
+            <p-password [(ngModel)]="user.password" 
+                        id="haslo" required  
+                        [toggleMask]="true"
+                        formControlName="passUser">
+            </p-password>
         </div>
         <div class="p-field">
             <label for="grupa">Grupa * </label>

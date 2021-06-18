@@ -40,9 +40,7 @@ export class RoleComponent implements OnInit, AfterViewChecked  {
               private config: PrimeNGConfig,
               private authenticationService: AuthenticationService,
               private readonly changeDetectorRef: ChangeDetectorRef
-              ) {
-                this.authenticationService.redirectIfforbidenPage();
-              }
+              ) {}
 
         ngAfterViewChecked(): void {
                 this.changeDetectorRef.detectChanges();

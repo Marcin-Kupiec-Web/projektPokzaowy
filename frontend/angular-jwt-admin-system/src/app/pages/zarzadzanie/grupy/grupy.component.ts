@@ -30,9 +30,7 @@ export class GrupyComponent implements OnInit {
               private confirmationService: ConfirmationService,
               private translateService: TranslateService,
               private config: PrimeNGConfig,
-              private authenticationService: AuthenticationService) {
-                 this.authenticationService.redirectIfforbidenPage();
-               }
+              private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
       this.grupaService.findAll().subscribe(data => {

@@ -26,21 +26,21 @@ export class SideNavComponent implements OnInit {
                   items: [
                       {label: 'Użytkownicy',
                         icon: 'pi pi-fw pi-user-plus',
-                        routerLink: ['/users']},
+                        routerLink: ['users']},
                       {label: 'Role',
                         icon: 'pi pi-fw pi-eye',
-                        routerLink: ['/roles']},
+                        routerLink: ['roles']},
                       {label: 'Uprawnienia',
                         icon: 'pi pi-fw pi-star',
-                        routerLink: ['/privileges']},
+                        routerLink: ['privileges']},
                       {label: 'Grupy',
                         icon: 'pi pi-fw pi-users',
-                        routerLink: ['/groups']}
+                        routerLink: ['groups']}
                   ]
               },
               {label: 'Rejestry',
                 icon: 'pi pi-fw pi-clock',
-                routerLink: ['/rejestry']},
+                routerLink: ['rejestry']},
               {separator: true},
               {label: 'Wyloguj', icon: 'pi pi-fw pi-times', url: '/#/login'}
           ]
