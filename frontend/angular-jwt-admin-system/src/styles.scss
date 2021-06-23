@@ -10,10 +10,12 @@ body {
     margin: 0;
     font-family: "Lato", sans-serif;
   }
-
+ * {
+  box-sizing: border-box;
+}
 .m-1{
       margin:5px!important;
-  }  
+  }
 .m-2{
     margin:10px!important;
 }
@@ -22,7 +24,7 @@ body {
 }
 .mt-1{
     margin-top:5px!important;
-}  
+}
 .mt-2{
   margin-top:10px!important;
 }

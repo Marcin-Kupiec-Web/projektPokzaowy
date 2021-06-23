@@ -4,16 +4,18 @@
     <p-dataView #dv [value]="announcementsList" [paginator]="true" [rows]="9" filterBy="description,title"
         [sortField]="sortField" [sortOrder]="sortOrder" layout="grid" >
         <ng-template pTemplate="header">
-            <div class="p-d-flex p-jc-md-between headerD">
-                <div>
-                <p-dropdown [options]="sortOptions"  [(ngModel)]="sortKey" placeholder="Sortuj" (onChange)="onSortChange($event)" styleClass="p-mb-2 p-mb-md-0"></p-dropdown>
+            <div class="p-d-flex p-jc-sm-between  headerD" style="overflow: auto">
+                <div  style="flex-wrap: wrap">
+                <p-dropdown  [options]="sortOptions"  [(ngModel)]="sortKey" placeholder="Sortuj" (onChange)="onSortChange($event)"
+                            styleClass="p-mb-2 p-mb-md-0" ></p-dropdown>
+
                 <span class="p-input-icon-left p-mb-2 p-mb-md-0 p-ml-1">
                     <i class="pi pi-search"></i>
                     <input type="search"  pInputText placeholder="Szukaj" (input)="dv.filter($event.target.value)">
                 </span>
                 </div>
                 <div class="p-d-flex " style=" white-space: nowrap;">
-                    <p-button pRipple  icon="pi pi-plus" (click)="openNew()" 
+                    <p-button pRipple  icon="pi pi-plus" (click)="openNew()"
                     styleClass="p-button-sm p-button-success p-mr-2" *ngIf="hasRole(['MODERATOR', 'ADMIN'])"></p-button>
                     <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
                 </div>
@@ -32,10 +34,10 @@
                         <div class="announcement-item-bottom" *ngIf="hasRole(['MODERATOR', 'ADMIN'])">
                             <!--<span class="announcement-user">{{announcement.user.username}}</span>-->
                             <div>
-                                <button pButton pRipple type="button" icon="pi pi-times" label="Usuń" 
+                                <button pButton pRipple type="button" icon="pi pi-times" label="Usuń"
                                 class="p-button-sm p-button-rounded p-button-outlined p-button-danger p-mr-2"
                                 (click)="deleteAnnouncement(announcement)"></button>
-                                <button pButton pRipple type="button" icon="pi pi-check" label="Edytuj" 
+                                <button pButton pRipple type="button" icon="pi pi-check" label="Edytuj"
                                 class="p-button-sm p-button-rounded p-button-outlined p-button-success"
                                 (click)="editAnnouncement(announcement)"></button>
                             </div>
@@ -58,10 +60,10 @@
                     <div class="announcement-item-bottom" *ngIf="hasRole(['MODERATOR', 'ADMIN'])">
                         <!--<span class="announcement-user">{{announcement.user.username}}</span>-->
                         <div>
-                            <button pButton pRipple type="button" icon="pi pi-times" label="Usuń" 
+                            <button pButton pRipple type="button" icon="pi pi-times" label="Usuń"
                             class="p-button-sm p-button-rounded p-button-outlined p-button-danger p-mr-2"
                             (click)="deleteAnnouncement(announcement)"></button>
-                            <button pButton pRipple type="button" icon="pi pi-check" label="Edytuj" 
+                            <button pButton pRipple type="button" icon="pi pi-check" label="Edytuj"
                             class="p-button-sm p-button-rounded p-button-outlined p-button-success"
                             (click)="editAnnouncement(announcement)"></button>
                         </div>
@@ -86,12 +88,12 @@
 </div>
 
 
-<p-dialog [(visible)]="announcementDialog"  header="Edycja/zapis ogłoszenia" [modal]="true" 
+<p-dialog [(visible)]="announcementDialog"  header="Edycja/zapis ogłoszenia" [modal]="true"
 styleClass="p-fluid respDialog" [contentStyle]="{ height:'350px'}" [formGroup]="announcementForm" >
     <ng-template pTemplate="content" >
         <div class="p-field">
             <label for="title">Tytuł * </label>
-            <input type="text" pInputText id="title" [(ngModel)]="announcement.title" required autofocus 
+            <input type="text" pInputText id="title" [(ngModel)]="announcement.title" required autofocus
             formControlName="announcementTitle"/>
         </div>
         <div class="p-field">
