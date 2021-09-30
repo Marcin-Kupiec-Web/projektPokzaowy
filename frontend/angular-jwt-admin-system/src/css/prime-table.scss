@@ -1,18 +1,38 @@
 .p-datatable .p-datatable-thead .p-column-filter button span::before  {
     content: "\e959";
-font-size: 18px;
-padding: 15px;
+    font-size: 18px;
+    padding: 15px;
 }
 
+.p-datatable .p-sortable-column:focus {
+  box-shadow:none;
+  outline: 0 none;
+}
+.my-table-small td{
+  padding: 7px!important
+}
+.p-datatable th{
+  padding-left: 10px !important;
+  border-bottom:1px solid rgb(226, 226, 226)!important;
+  transition: 0.2s!important;
+}
+.p-datatable th:hover{
+  transition: 2s;
+  transform:translateX(-3px);
+  background-color: rgba(245, 245, 245, 0.336)!important;
+}
 
-  
+.p-datatable-header, .p-datatable-footer {
+  background-color: rgba(247, 247, 247, 0.473)!important;
+  padding: 10px!important;
+}
   .p-datatable-responsive-my .p-datatable-tbody > tr > td .p-column-title {
       display: none;
   }
 
 
 @media screen and (max-width: 40rem) {
- 
+
       .p-datatable {
           &.p-datatable-responsive-my {
               .p-datatable-thead > tr > th,

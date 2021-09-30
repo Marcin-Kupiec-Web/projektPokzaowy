@@ -10,7 +10,7 @@ export class HttpInterceptorService implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // alert(this.authenticationService.getLoggedInUserName());
 
-        const currentUser = localStorage.getItem('access_token');
+        const currentUser = sessionStorage.getItem('access_token');
        // const isApiUrl = request.url.startsWith(config.apiUrl);
         if (currentUser) {
             request = request.clone({

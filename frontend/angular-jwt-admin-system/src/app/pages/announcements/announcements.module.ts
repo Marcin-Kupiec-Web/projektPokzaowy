@@ -17,7 +17,9 @@ import {DropdownModule} from 'primeng/dropdown';
 import {RatingModule} from 'primeng/rating';
 import {SkeletonModule} from 'primeng/skeleton';
 import {TagModule} from 'primeng/tag';
-
+import {RippleModule} from 'primeng/ripple';
+import {MFileManagerModule} from '../../my-modules/m-file-manager/m-file-manager.module'
+import {MultiSelectModule} from 'primeng/multiselect';
 @NgModule({
   declarations: [AnnouncementsComponent],
   imports: [
@@ -37,7 +39,10 @@ import {TagModule} from 'primeng/tag';
     DropdownModule,
     RatingModule,
     SkeletonModule,
-    TagModule
+    TagModule,
+    RippleModule,
+    MFileManagerModule,
+    MultiSelectModule
   ]
 })
 export class AnnouncementsModule { }

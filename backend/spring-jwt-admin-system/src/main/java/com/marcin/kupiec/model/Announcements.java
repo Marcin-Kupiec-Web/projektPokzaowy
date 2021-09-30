@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,18 +32,22 @@ public class Announcements implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
    
     public Announcements() {
     }
     
     @NotBlank(message = "Pole jest wymagane!")
-    @Size(min=2,max = 255, message="Wpisz co najmniej 2 znaki!")
+    @Size(min=2,max = 60, message="Wpisz co najmniej 2 znaki!")
     @NotNull
     @Column(name = "title")
     private String title;
+    
  
+    @Lob
+    @Column( length = 50000 )
     private String description;
+    
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
     
@@ -50,11 +55,11 @@ public class Announcements implements Serializable {
 	@JoinColumn(name="id_user")
 	private User user;
 	
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -67,7 +72,6 @@ public class Announcements implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Announcements)) {
             return false;
         }

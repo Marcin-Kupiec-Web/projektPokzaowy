@@ -18,7 +18,6 @@ public class UserObjectRest {
 	}
 
 	public List<User> getUsersList() {
-		// TODO Auto-generated method stub
 	return usersList;
 	}
 	public List<Role> getRlm() {

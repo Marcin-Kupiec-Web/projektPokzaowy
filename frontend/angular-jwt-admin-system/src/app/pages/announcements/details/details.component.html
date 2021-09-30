@@ -1,0 +1,85 @@
+<div class="myCard">
+  <div style="text-align: right;margin-bottom: 7px;">
+    <button pButton pRipple type="button"  icon="pi pi-times"
+            class="p-button-rounded my-btn-blue noborder"  (click)="goBack()" ></button>
+    </div>
+  <div class="myCard-header">
+
+<!--
+    <p-galleria [value]="images" [responsiveOptions]="responsiveOptions"  [numVisible]="5"
+    [circular]="true" [showItemNavigators]="true" [showThumbnails]="false" [showIndicators]="false" [showItemNavigatorsOnHover]="true" indicatorsPosition="top"
+    [showIndicatorsOnItem]="true">
+      <ng-template pTemplate="item" let-item>
+          <img [src]="item.source" style="width: 100%; display: block;" />
+      </ng-template>
+      <ng-template pTemplate="thumbnail" let-item>
+          <div class="p-grid p-nogutter p-justify-center" style="display: block;" >
+              <img [src]="item.source" />
+          </div>
+      </ng-template>
+
+      <ng-template pTemplate="caption" let-item >
+        <h4 style="margin-bottom: .5rem; color: #ffffff;"  *ngIf="item.title!=='undefined'">{{item.title}}</h4>
+        <p  *ngIf="item.alt!=='undefined'">{{item.alt}}</p>
+    </ng-template>
+
+  </p-galleria>
+-->
+  <div *ngFor="let image of images; let i = index; let last = last">
+    <img *ngIf="image.main" [src]="image.source" alt="" (click)="showModal(i)" style="cursor: pointer;"/>
+    <div  *ngIf="image.title !== 'undefined'" [ngClass]="{'noDisplayImg': !image.main}"
+          style="font-style: italic;font-size: smaller;text-transform: capitalize; font-family: 'Times New Roman', Times, serif ;padding: 10px 1px 1px 1px;margin-top:-12px;color:rgb(66, 66, 66)">
+      <h2>{{image.title}}</h2>
+    </div>
+  </div>
+  </div>
+  <div class="myCard-title">
+    {{announcement.title}}
+  </div>
+  <div class="myCard-content">
+    {{announcement.description}}
+  </div>
+    <div style="clear: both;"></div>
+  </div>
+
+
+  <p-dialog  [(visible)]="isVisible"
+             [modal]="true"
+             [style]="{maxHeight: '95vh'}"
+             [draggable]="false"
+             [resizable]="true"
+             [dismissableMask]="true">
+    <ng-template pTemplate="header">
+      <div >
+        <span *ngIf="currentSlideSrc.title && currentSlideSrc.title!== 'undefined'; else titleEmpty" >
+          {{currentSlideSrc.title}}</span>
+          <ng-template #titleEmpty>
+          <span> Galeria </span>
+          </ng-template>
+  </div>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <div  style="text-align: center;" >
+            <a class="prev" (click)="minusSlides(-1)">&#10094;</a>
+            <a class="next" (click)="plusSlides(1)">&#10095;</a>
+              <img  [src]="currentSlideSrc.source" alt="" style="max-width:100%;height: auto;max-height: 65vh;margin:auto"/>
+              <div class="modal-content-description" *ngIf="currentSlideSrc.description && currentSlideSrc.description!== 'undefined'" >
+                  <span>
+                      {{currentSlideSrc.description}}
+                  </span>
+              </div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="footer">
+        <div style="display: flex; justify-content: space-between;">
+          <div>{{currentIndexImage+1}} / {{countAllImages}}</div>
+          <div style="display: flex; justify-content: center">
+              <div *ngFor="let image of images; let i = index; let last = last">
+                <span class="dot" (click)="currentSlide(i)" [ngClass] = "{'active': currentIndexImage === i}"></span>
+              </div>
+          </div>
+          <div></div>
+      </div>
+
+      </ng-template>
+</p-dialog>

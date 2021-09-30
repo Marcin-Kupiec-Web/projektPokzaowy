@@ -100,7 +100,7 @@ export class PrivilegesComponent implements OnInit, AfterViewChecked {
         this.loading = true;
         this.privilegesService.addPrivilege(privilege).subscribe(data => {
          this.privileges.push(data);
-         this.privileges = [...this.privileges];
+         //this.privileges = [...this.privileges];
          this.loading = false;
        });
    }

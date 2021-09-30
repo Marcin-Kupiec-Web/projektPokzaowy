@@ -2,18 +2,23 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Announcements } from 'src/model/announcements';
-
+import { iphost } from 'src/app/global-viable';
 @Injectable({
   providedIn: 'root'
 })
 export class AnnouncementsService {
   private Url: string;
-
   constructor(private http: HttpClient) {
-     this.Url = 'http://localhost:8080/systemApp/restControllerAppAnnouncements';
+     this.Url = iphost+'/systemApp/restControllerAppAnnouncements';
   }
   public findAll(): Observable<Announcements[]> {
     return this.http.get<Announcements[]>(this.Url + '/getAnnouncements');
+  }
+  public findById(id: number): Observable<Announcements> {
+    return this.http.get<Announcements>(this.Url + '/getAnnouncementById/'+id);
+  }
+  public findByWord(word: any): Observable<Announcements[]> {
+    return this.http.get<Announcements[]>(this.Url + '/getAnnouncementByWord/'+word);
   }
   public addAnnouncement(anno: Announcements): Observable<any> {
     return this.http.post(this.Url + '/addAnnouncements', anno);
@@ -26,4 +31,5 @@ export class AnnouncementsService {
   public removeAnnouncement(anno: Announcements): Observable<any> {
     return this.http.delete(this.Url + '/deleteAnnouncements' + '/' + anno.id);
   }
+
 }

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from 'src/model/user';
-
+import { iphost } from 'src/app/global-viable';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +11,7 @@ export class UsersService {
   private usersUrl: string;
 
   constructor(private http: HttpClient) {
-    this.usersUrl = 'http://localhost:8080/systemApp/restControllerAppUs';
+    this.usersUrl = iphost+'/systemApp/restControllerAppUs';
   }
 
   public findAll(): Observable<any[]> {
@@ -21,6 +21,11 @@ export class UsersService {
   public findByName(name: string): Observable<any[]> {
     return this.http.get<any[]>(this.usersUrl + '/findUser/' + name);
   }
+
+  public findAuthenticUserByName(name: string): Observable<any[]> {
+    return this.http.get<any[]>(this.usersUrl + '/findAuthenticUserByName/' + name);
+  }
+
   public findById(id: number): Observable<any[]> {
     return this.http.get<any[]>(this.usersUrl + '/findUserId/' + id);
   }

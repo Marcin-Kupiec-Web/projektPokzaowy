@@ -17,7 +17,7 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import { GrupyComponent } from './grupy.component';
-
+import {RippleModule} from 'primeng/ripple';
 @NgModule({
   declarations: [GrupyComponent],
   imports: [
@@ -36,7 +36,8 @@ import { GrupyComponent } from './grupy.component';
     InputNumberModule,
     ConfirmDialogModule,
     MultiSelectModule,
-    InputTextareaModule
+    InputTextareaModule,
+    RippleModule
     ]
 })
 export class GrupyModule { }

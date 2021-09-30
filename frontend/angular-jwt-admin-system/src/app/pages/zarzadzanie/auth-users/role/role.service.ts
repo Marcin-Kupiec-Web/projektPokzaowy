@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Role } from 'src/model/role';
+import { iphost } from 'src/app/global-viable';
 @Injectable({
   providedIn: 'root'
 })
 export class RoleService {
   private usersUrl: string;
   constructor(private http: HttpClient) {
-    this.usersUrl = 'http://localhost:8080/systemApp/restControllerAppUs';
+    this.usersUrl = iphost+'/systemApp/restControllerAppRole';
   }
 
   public findAll(): Observable<any[]> {

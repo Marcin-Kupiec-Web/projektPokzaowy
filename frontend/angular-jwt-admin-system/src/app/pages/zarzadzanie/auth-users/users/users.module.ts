@@ -17,7 +17,7 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {PasswordModule} from 'primeng/password';
-
+import {RippleModule} from 'primeng/ripple';
 @NgModule({
   declarations: [UsersComponent],
   imports: [
@@ -37,7 +37,8 @@ import {PasswordModule} from 'primeng/password';
     ConfirmDialogModule,
     MultiSelectModule,
     SelectButtonModule,
-    PasswordModule
+    PasswordModule,
+    RippleModule
   ]
 })
 export class UsersModule { }

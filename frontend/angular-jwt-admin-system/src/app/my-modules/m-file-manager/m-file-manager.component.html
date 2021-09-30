@@ -1,0 +1,72 @@
+<div class="file-manager" *ngIf="announcement.id">
+  <div class="file-manager-header">
+      <input
+      style="display: none"
+      type="file"
+      accept="image/*"
+      multiple
+      (change)="onFileChanged($event)"
+      #fileInput>
+        <button pButton pRipple type="button" (click)="fileInput.click()" label="Wybierz" class="p-button-raised p-button-warning p-button-sm" ></button>
+        <button pButton pRipple type="button" (click)="onUpload($event, announcement.id)" label="Pobierz" class="p-button-raised p-button-warning p-button-sm" ></button>
+  </div>
+  <div class="file-manager-content" *ngIf="uploadedFiles.length">
+
+      <div class="file-manager-content-row" *ngFor="let file of uploadedFiles">
+        <div><b>{{file.source.name}}</b></div>
+        <div>{{file.source.type}}</div>
+        <div>{{file.source.size}} bytes</div>
+        <div >
+              <button pButton pRipple type="button" (click)="deleteUpload(file, fileInput)" label="X"
+                      class="p-button-raised p-button-danger p-button-sm"
+                       style="width: 30px;padding:2px"></button>
+              <button pButton pRipple type="button" (click)="openFileManagerDialog(file)" label="v"
+                       class="p-button-raised p-button-info p-button-sm p-ml-2"
+                        style="width: 30px;padding:2px"></button>
+        </div>
+      </div>
+  </div>
+
+  <div class="file-manager-uploaded" *ngIf="announcement.announcementsImagesCollection">
+    <div class="file-manager-uploaded-img" *ngFor="let image of announcement.announcementsImagesCollection" >
+      <img src="data:image/png;base64,{{image.source}}" class="rounded-circle" (click)="openFileManagerDialog(image)">
+        <button pButton  type="button"  label="X"
+                      (click)="deleteSelectedImg(image.id)"
+                      class="p-button-raised p-button-danger p-button-sm"
+                       style="width: 25px;padding:1px"></button>
+    </div>
+  </div>
+</div>
+
+
+<p-dialog [(visible)]="fileManagerDialog"  header="Edycja/zapis ogłoszenia" [modal]="true"
+          styleClass="p-fluid respDialog" [style]="{width: '50vw'}"  [formGroup]="fileManagerForm">
+          <ng-template pTemplate="content" >
+            <div class="p-field">
+              <div class="m-1"><label for="title">Tytuł * </label></div>
+                <input type="text" pInputText id="title" name="file" [(ngModel)]="announcementsImages.title" required autofocus
+                formControlName="announcementImagesTitle"/>
+            </div>
+            <div class="p-field">
+              <div class="m-1"><label for="title">Tekst alternatywny * </label></div>
+                <input type="text" pInputText id="title" name="file" [(ngModel)]="announcementsImages.alt" required autofocus
+                formControlName="announcementImagesAlt"/>
+            </div>
+            <div class="p-field">
+                <div class="m-1"><label for="description">Opis</label></div>
+                <textarea pInputTextarea id="descryption" rows="10" [(ngModel)]="announcementsImages.description"
+                formControlName="announcementImagesDescription"></textarea>
+            </div>
+            <div class="p-field-checkbox">
+              <div class="m-1"><label for="main">Główny</label></div>
+              <p-checkbox inputId="binary" (click)="onMainChanged(announcementsImages.main)" id="main" [(ngModel)]="announcementsImages.main" [binary]="true"
+              formControlName="announcementImagesMain"></p-checkbox>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <p-button icon="pi pi-check" *ngIf="announcementsImages.title || announcementsImages.main
+                                          || announcementsImages.alt || announcementsImages.description"
+                                          (click)="imageDetailsUpdate(announcementsImages)" label="OK"   styleClass="p-button-text"></p-button>
+        </ng-template>
+
+</p-dialog>

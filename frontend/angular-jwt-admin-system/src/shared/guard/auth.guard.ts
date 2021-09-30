@@ -27,6 +27,7 @@ export class Permiss {
 
   if (user.token) {
       const rola = user.token.role;
+
       const uprawnienia = user.token.privileges;
       if (rola != null) {
          if (this.grandAuthor[url] && this.grandAuthor[url].role !== null) {

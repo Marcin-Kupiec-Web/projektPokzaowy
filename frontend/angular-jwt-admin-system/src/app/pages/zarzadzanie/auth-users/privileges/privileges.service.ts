@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Privilege } from 'src/model/privilege';
-
+import { iphost } from 'src/app/global-viable';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +11,7 @@ export class PrivilegesService {
   private usersUrl: string;
 
   constructor(private http: HttpClient) {
-    this.usersUrl = 'http://localhost:8080/systemApp/restControllerAppUs';
+    this.usersUrl = iphost+'/systemApp/restControllerAppPrivileges';
   }
 
   public findAll(): Observable<any[]> {

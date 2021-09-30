@@ -15,7 +15,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {MultiSelectModule} from 'primeng/multiselect';
-
+import {RippleModule} from 'primeng/ripple';
 @NgModule({
   declarations: [RoleComponent],
   imports: [
@@ -33,7 +33,8 @@ import {MultiSelectModule} from 'primeng/multiselect';
     RadioButtonModule,
     InputNumberModule,
     ConfirmDialogModule,
-    MultiSelectModule
+    MultiSelectModule,
+    RippleModule
   ]
 })
 export class RoleModule { }

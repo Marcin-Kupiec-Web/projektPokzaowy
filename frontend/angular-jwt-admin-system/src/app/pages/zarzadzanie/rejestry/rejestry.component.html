@@ -1,14 +1,14 @@
-<div class="card">  
+<div class="card">
     <p-table #dt [value]="rejestry" [rows]="10" [paginator]="true" [globalFilterFields]="['id','akcja','obiekt','uzytkownik','data','uwagi']"
          [rowHover]="true" dataKey="id" [loading]="loading"
         currentPageReportTemplate="{first} z {last} / {totalRecords}" [showCurrentPageReport]="true"
-        styleClass="p-datatable-responsive-my">
+        styleClass="p-datatable-responsive-my p-shadow-3 my-table-small">
         <ng-template pTemplate="caption">
             <div class="p-d-flex">
                 <button pButton  class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt)"></button>
                 <span class="p-input-icon-left p-ml-auto">
                     <i class="pi pi-search"></i>
-                    <input pInputText type="text" [(ngModel)]="search" (input)="dt.filterGlobal($event.target.value, 'contains')" 
+                    <input pInputText type="text" [(ngModel)]="search" (input)="dt.filterGlobal($event.target.value, 'contains')"
                             placeholder="Wpisz" style="width:100%"/>
                 </span>
             </div>
@@ -16,7 +16,7 @@
         <ng-template pTemplate="header">
             <tr>
                 <th pSortableColumn="id" style="width:100px">Id <p-sortIcon field="id"></p-sortIcon></th>
-                <th pSortableColumn="akcja">Akcja 
+                <th pSortableColumn="akcja">Akcja
                     <p-sortIcon field="akcja"></p-sortIcon>
                     <p-columnFilter type="text" field="akcja" display="menu"></p-columnFilter>
                 </th>
@@ -24,15 +24,15 @@
                     <p-sortIcon field="obiekt"></p-sortIcon>
                     <p-columnFilter type="text" field="obiekt" display="menu"></p-columnFilter>
                 </th>
-                <th pSortableColumn="uzytkownik">Użytkownik 
+                <th pSortableColumn="uzytkownik">Użytkownik
                     <p-sortIcon field="uzytkownik"></p-sortIcon>
                     <p-columnFilter type="text" field="uzytkownik" display="menu"></p-columnFilter>
                 </th>
-                <th pSortableColumn="data">Data 
+                <th pSortableColumn="data">Data
                     <p-sortIcon field="data"></p-sortIcon>
                     <p-columnFilter field="data" display="menu"></p-columnFilter>
                 </th>
-                <th pSortableColumn="uwagi">Uwagi 
+                <th pSortableColumn="uwagi">Uwagi
                     <p-sortIcon field="uwagi"></p-sortIcon>
                     <p-columnFilter type="text" field="uwagi" display="menu"></p-columnFilter>
                 </th>

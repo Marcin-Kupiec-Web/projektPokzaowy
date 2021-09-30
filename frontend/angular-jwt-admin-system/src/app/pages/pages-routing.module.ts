@@ -21,6 +21,8 @@ children: [
   .then(m => m.RejestryModule)},
   { path: 'announcements', loadChildren: () => import('./announcements/announcements.module')
   .then(m => m.AnnouncementsModule) },
+  { path: 'announcement-details/:id', loadChildren: () => import('./announcements/details/details.module').then(m => m.DetailsModule) }
+
 ]},
 
 ];

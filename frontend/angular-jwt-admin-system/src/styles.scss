@@ -1,8 +1,11 @@
-@import './css/buttonX.css';
+
 @import './css/prime-table.scss';
+@import './css/buttons.scss';
+@import './css/margin.scss';
+@import './css/padding.scss';
 
 :root {
-  --my-primary-color: var(--cyan-700);
+  --my-primary-color: rgb(0, 84, 163);
   --my-secondary-color: var(--blue-300);
   --white: #ffffff;
 }
@@ -12,28 +15,14 @@ body {
   }
  * {
   box-sizing: border-box;
+  text-rendering: geometricPrecision;
 }
-.m-1{
-      margin:5px!important;
-  }
-.m-2{
-    margin:10px!important;
+.b-light{
+  background-color: #f8f8f89c!important;
+  border:1px solid whitesmoke
 }
-.m-3{
-    margin:20px!important;
-}
-.mt-1{
-    margin-top:5px!important;
-}
-.mt-2{
-  margin-top:10px!important;
-}
-.mt-3{
-  margin-top:20px!important;
-}
-.mt-4{
-    margin-top:30px!important;
-  }
+
   .w-100{
       width: 100%!important;
   }
+

@@ -119,7 +119,7 @@ export class RoleComponent implements OnInit, AfterViewChecked  {
           this.loading = true;
           this.roleService.addRola(rola).subscribe(data => {
             this.roles.push(data);
-            this.roles = [...this.roles];
+           //this.roles = [...this.roles];
             this.loading = false;
           });
       }

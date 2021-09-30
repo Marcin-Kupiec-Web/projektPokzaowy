@@ -7,6 +7,6 @@ import com.marcin.kupiec.model.Announcements;
 
 
 @Repository("announcementsRepository")
-public interface AnnouncementsRepository extends JpaRepository<Announcements, Integer> {
+public interface AnnouncementsRepository extends JpaRepository<Announcements, Long> {
 	Announcements findByTitle(String title);
 }

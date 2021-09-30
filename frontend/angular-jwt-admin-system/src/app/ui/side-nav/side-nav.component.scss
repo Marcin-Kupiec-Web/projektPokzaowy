@@ -2,8 +2,8 @@
     margin: 0;
     padding: 0;
     width: 200px;
-    background-color: rgb(185, 174, 216);
-    background-color: var(--my-secondary-color);
+    background-color: rgb(1, 71, 136);
+
     position: fixed;
     top:50px;
     height: 100%;
@@ -11,13 +11,9 @@
     display: block;
     z-index:99;
     transition: 0.5s;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 3px 1px 12px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.164), 3px 1px 12px rgba(0, 0, 0, 0.192);
 }
-:host ::ng-deep .myClass.p-accordion {
-    .p-accordion-header:not(.p-disabled).p-highlight .p-accordion-header-link {
-        background: red;
-    }
-}
+
 .sidebar a {
 display: block;
 padding: 16px;
@@ -34,23 +30,69 @@ color: crimson;
 }
 
 @media screen and (max-width: 800px) {
-    
-    .sidebar{width:0;}     
+
+    .sidebar{width:0;}
 
     .sidebar.responsiveSidebar{
             display: block;
             width: 200px;
-            background-color: #047380;
     }
     .sidebar.responsiveSidebar a{
         color:white
     }
-   
-  
+
+
 }
  @media screen and (min-width: 800px) {
   .sidebar.responsiveSidebar{
             width: 0px;
     }
-  
+
 }
+.p-widget li.p-menptem{
+  background-color:#f2f2f2 !important;
+  border: medium none !important;
+  border-radius: 4px 4px 0 0 !important;
+  }
+
+
+ :host ::ng-deep  {
+  .p-panelmenu *{
+    border:none;
+  }
+  .p-panelmenu .p-panelmenu-content{
+      background-color: rgb(255, 250, 250)!important;
+      font-family:Georgia, 'Times New Roman', Times, serif;
+  }
+  .p-panelmenu .p-panelmenu-header > a {
+    background-color: rgba(255, 255, 255, 0.877)!important;
+    border:none;
+    border-radius: 0!important;
+  }
+  .p-panelmenu *{
+    font-size: 0.9rem;
+  }
+  .p-panelmenu .p-panelmenu-header > a:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0 orange;
+
+  }
+  .p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link {
+    transition: 0.2s;
+  }
+
+  .p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: none;
+  }
+
+  .actives{
+    border-right:2px solid tomato!important;
+    font-weight:500;
+  }
+
+}
+
+

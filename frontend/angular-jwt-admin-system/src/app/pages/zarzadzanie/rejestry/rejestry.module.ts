@@ -7,7 +7,7 @@ import {TableModule} from 'primeng/table';
 import { TranslateModule } from '@ngx-translate/core';
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
-
+import {RippleModule} from 'primeng/ripple';
 @NgModule({
   declarations: [RejestryComponent],
   imports: [
@@ -17,7 +17,8 @@ import {ButtonModule} from 'primeng/button';
     TableModule,
     TranslateModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    RippleModule
   ]
 })
 export class RejestryModule { }

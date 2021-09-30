@@ -1,0 +1,77 @@
+.myCard {
+
+  margin:auto;
+  padding: 10px;
+  &-header{
+    text-align: center;
+    margin-bottom: 20px;
+    width: 60%;
+    margin:auto;
+     img {
+       width: 100%;
+       margin:auto;
+       border-radius: 5px;
+     }
+  }
+  &-title{
+    font-weight: 600;
+    font-size: 1.3rem;
+    margin-top:20px;
+  }
+  &-content{
+
+    font-family: 'Times New Roman', Times, serif;
+    text-align: justify;
+    font-size: 1.1rem;
+    line-height: 2rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .myCard {
+
+    &-header{
+      width: 100%;
+      text-align: center;
+       margin:0;
+       img {
+         width: 100%;
+       }
+    }
+  }
+}
+
+@media screen and (max-width: 876px) {
+  .myCard {
+    &-header{
+      text-align: center;
+       margin:0;
+       img {
+         width: 100%;
+       }
+    }
+  }
+}
+
+:host ::ng-deep {
+  .p-galleria-caption{
+    padding: 0;
+  }
+
+  .p-dialog-mask.p-component-overlay {
+    background:rgba(0, 0, 0, 0.863)!important;
+ }
+ .p-dialog,.p-dialog .p-dialog-header,.p-dialog .p-dialog-footer{
+   border:none;
+ }
+ .p-dialog .p-dialog-header, .p-dialog .p-dialog-footer,  .p-dialog .p-dialog-content{
+   background: rgb(41, 41, 41);
+   color:white
+ }
+}
+
+.active{
+  transition: 0.3s;
+  background-color: aqua;
+  width: 35px;
+}

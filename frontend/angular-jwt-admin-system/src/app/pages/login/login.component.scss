@@ -19,9 +19,12 @@
     max-width:400px;
     padding:25px;
     margin: auto;
-    margin-top:10%;
+    margin-top:150px;
     border-radius: 5px;
     background-color: white;
+}
+.loginPanel *{
+  font-size: 1.1rem;
 }
 .loginPanel input{
     background-color: whitesmoke;
@@ -30,6 +33,6 @@
 @media screen and (max-width: 400px) {
     .loginPanel{
         margin:20px!important;
-        margin-top: 10%;;
+        margin-top: 150px!important;
     }
 }

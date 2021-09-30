@@ -2,24 +2,24 @@
 <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
 
 <div class="card">
-    <p-toolbar styleClass="p-mb-4">
+    <p-toolbar styleClass="p-mb-4 b-light">
         <ng-template pTemplate="left">
             <button pButton pRipple label="Nowy" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()"></button>
             <button pButton pRipple  icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedRoles()" [disabled]="!selectedRoles || !selectedRoles.length"></button>
         </ng-template>
     </p-toolbar>
-  
-    <p-table #dt [value]="roles" [rows]="10" [paginator]="true" 
+
+    <p-table #dt [value]="roles" [rows]="10" [paginator]="true"
     [globalFilterFields]="['id','name','privilegesString','poziomUprawnien']"
         [(selection)]="selectedRoles" [rowHover]="true" dataKey="id" [loading]="loading"
         currentPageReportTemplate="{first} z {last} / {totalRecords}" [showCurrentPageReport]="true"
-        styleClass="p-datatable-responsive-my">
+        styleClass="p-datatable-responsive-my p-shadow-3">
         <ng-template pTemplate="caption">
             <div class="p-d-flex">
                 <button pButton  class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt)"></button>
                 <span class="p-input-icon-left p-ml-auto">
                     <i class="pi pi-search"></i>
-                    <input pInputText type="text" [(ngModel)]="search" (input)="dt.filterGlobal($event.target.value, 'contains')" 
+                    <input pInputText type="text" [(ngModel)]="search" (input)="dt.filterGlobal($event.target.value, 'contains')"
                             placeholder="Wpisz" style="width:100%"/>
                 </span>
             </div>
@@ -46,9 +46,9 @@
                 <td><span class="p-column-title">Uprawnienia</span> {{rola.privilegesString}}</td>
                 <td><span class="p-column-title">Poziom upr.</span> {{rola.poziomUprawnien}}</td>
                 <td>
-                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" 
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"
                     (click)="editRola(rola)" [disabled]="rola.name === 'ADMIN'"></button>
-                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" 
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
                     (click)="deleteRola(rola)" [disabled]="rola.name === 'ADMIN'"></button>
                 </td>
             </tr>
@@ -61,22 +61,22 @@
     </p-table>
 </div>
 
-<p-dialog [(visible)]="rolaDialog"  header="Edycja roli" [modal]="true" 
-styleClass="p-fluid respDialog" [contentStyle]="{ height:'350px'}" [formGroup]="rolaForm" >
+<p-dialog [(visible)]="rolaDialog"  header="Edycja roli" [modal]="true"
+styleClass="p-fluid respDialog" [contentStyle]="{overflow:'visible'}" [formGroup]="rolaForm" >
     <ng-template pTemplate="content" >
         <div class="p-field">
             <label for="name">Nazwa * </label>
-            <input type="text" pInputText id="name" [(ngModel)]="rola.name" required autofocus 
+            <input type="text" pInputText id="name" [(ngModel)]="rola.name" required autofocus
             formControlName="rolaName"/>
         </div>
         <div class="p-field">
             <label for="privileges">Uprawnienia * </label>
-            <p-multiSelect [options]="privilegesSave" inputId="privileges" [(ngModel)]="rola.privileges"  
+            <p-multiSelect [options]="privilegesSave" inputId="privileges" [(ngModel)]="rola.privileges"
                 optionLabel="name" display="chip" formControlName="rolaPrvilege" required></p-multiSelect>
         </div>
         <div class="p-field">
           <label for="minmax">Poziom uprawnień * </label>
-          <p-inputNumber [(ngModel)]="rola.poziomUprawnien" inputId="minmax" inputId="minmax" 
+          <p-inputNumber [(ngModel)]="rola.poziomUprawnien" inputId="minmax" inputId="minmax"
           mode="decimal" [min]="1" [max]="10" formControlName="rolaPoziomUpr">
           </p-inputNumber>
       </div>
