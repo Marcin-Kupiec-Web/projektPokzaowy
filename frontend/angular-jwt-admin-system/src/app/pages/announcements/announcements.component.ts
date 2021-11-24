@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Announcements } from 'src/model/announcements';
 import { AnnouncementsService } from './announcements.service';
@@ -7,11 +7,12 @@ import { ConfirmationService, PrimeNGConfig, SelectItem } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import { AuthenticationService } from 'src/services/auth.service';
 import { ViewportScroller, Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RoutesRecognized } from '@angular/router';
 import { iphost } from 'src/app/global-viable';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { GrupaService } from '../zarzadzanie/grupy/grupy.service';
 import { Grupa } from 'src/model/grupa';
+import { filter, pairwise } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-announcements',
@@ -19,7 +20,7 @@ import { Grupa } from 'src/model/grupa';
   styleUrls: ['./announcements.component.scss'],
   providers: [MessageService, ConfirmationService]
 })
-export class AnnouncementsComponent implements OnInit, AfterViewChecked {
+export class AnnouncementsComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   @HostListener('window:scroll', ['$event']) // for window scroll events
     onScroll(event: any) {
@@ -42,6 +43,7 @@ export class AnnouncementsComponent implements OnInit, AfterViewChecked {
   usersAuthentic!: any;
   findWord: any;
   groups!: Grupa[];
+  subscribt!: Subscription;
   constructor(private announcementsService: AnnouncementsService,
               private translateService: TranslateService,
               private messageService: MessageService,
@@ -50,11 +52,31 @@ export class AnnouncementsComponent implements OnInit, AfterViewChecked {
               private grupaService: GrupaService,
               private viewportScroller: ViewportScroller,
               private route: ActivatedRoute,
+              private router: Router,
               private location: Location,
               private config: PrimeNGConfig) {
                 this.fragment = this.route.snapshot.fragment;
                 this.translateLang('pl');
+
+                this.subscribt = this.router.events
+                .pipe(filter((e: any) => e instanceof RoutesRecognized),
+                  pairwise()
+                ).subscribe((e: any) => {
+                  let url: string = e[0].urlAfterRedirects;
+
+                  if(url.indexOf('announcement') < 0 ){ // url !== 'announcemets && url !== announcement-detail then remove sessionStor
+                    sessionStorage.removeItem('findWord');
+                    sessionStorage.removeItem('sortValue');
+                    sessionStorage.removeItem('sortKey');
+                  }
+
+            });
+
+
               }
+  ngOnDestroy(): void {
+    this.subscribt.unsubscribe();
+  }
 
 
     ngAfterViewChecked(): void {

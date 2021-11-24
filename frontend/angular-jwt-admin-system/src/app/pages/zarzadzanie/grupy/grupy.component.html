@@ -66,18 +66,18 @@ styleClass="p-fluid respDialog" [contentStyle]="{ height:'350px'}" [formGroup]="
     <ng-template pTemplate="content" >
         <div class="p-field">
             <label for="name">Nazwa * </label>
-            <input type="text" pInputText id="name" [(ngModel)]="group.name" required autofocus
-            formControlName="groupName"/>
+            <input type="text" pInputText id="name"
+                    formControlName="groupName" required />
         </div>
         <div class="p-field">
             <label for="shortName">Skróc. nazwa * </label>
-            <input type="text" pInputText id="shortName" [(ngModel)]="group.shortName" required
-            formControlName="groupShortName"/>
+            <input type="text" pInputText id="shortName" required
+                    formControlName="groupShortName"/>
         </div>
         <div class="p-field">
             <label for="description">Opis</label>
-            <textarea pInputTextarea id="descryption"  [(ngModel)]="group.description"
-            formControlName="groupDescription"></textarea>
+            <textarea pInputTextarea id="descryption"
+                       formControlName="groupDescription"></textarea>
         </div>
     </ng-template>
     <ng-template pTemplate="footer">

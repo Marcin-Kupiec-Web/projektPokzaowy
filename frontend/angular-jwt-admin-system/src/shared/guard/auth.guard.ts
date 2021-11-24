@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateChild, UrlTree, UrlSegment } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot, CanActivateChild, UrlTree, UrlSegment } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MyToken } from 'src/app/intefaces/token';
 import { AuthenticationService } from 'src/services/auth.service';

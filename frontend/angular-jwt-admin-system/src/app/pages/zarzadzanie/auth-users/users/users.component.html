@@ -80,21 +80,21 @@ styleClass="p-fluid respDialog" [contentStyle]="{overflow:'visible'}" [formGroup
     <ng-template pTemplate="content" >
         <div class="p-field">
             <label for="name">Nazwa</label>
-            <input type="text" pInputText id="name" [(ngModel)]="user.username"
-                    required autofocus
+            <input type="text"
+                    pInputText id="name"
+                    required
                     formControlName="nameUser"/>
         </div>
         <div class="p-field">
             <label for="haslo">Hasło * </label>
-            <p-password [(ngModel)]="user.password"
-                        id="haslo" required
+            <p-password id="haslo" required
                         [toggleMask]="true"
                         formControlName="passUser">
             </p-password>
         </div>
         <div class="p-field">
             <label for="grupa">Grupa * </label>
-            <p-dropdown [(ngModel)]="user.grupa" inputId="grupa" [options]="groups"
+            <p-dropdown inputId="grupa" [options]="groups"
                         optionLabel="shortName" placeholder="Wybierz" appendTo="body"
                         [filter]="true" filterBy="shortName" [showClear]="true"
                         formControlName="groupUser" >
@@ -102,11 +102,11 @@ styleClass="p-fluid respDialog" [contentStyle]="{overflow:'visible'}" [formGroup
         </div>
         <div class="p-field">
             <label for="fole">Role * </label>
-            <p-multiSelect [options]="roles" inputId="role" [(ngModel)]="user.roleCollection"
+            <p-multiSelect [options]="roles" inputId="role"
                 optionLabel="name" display="chip" formControlName="roleUser" required></p-multiSelect>
         </div>
         <div class="p-field">
-         <p-selectButton [options]="stateOptions" [(ngModel)]="user.enabled" optionLabel="label" optionValue="value"
+         <p-selectButton [options]="stateOptions" optionLabel="label" optionValue="value"
                         formControlName="enableUser"></p-selectButton>
         </div>
     </ng-template>

@@ -66,8 +66,8 @@ styleClass="p-fluid respDialog" [contentStyle]="{ height:'200px'}" [formGroup]="
     <ng-template pTemplate="content" >
         <div class="p-field">
             <label for="name">Nazwa * </label>
-            <input type="text" pInputText id="name" [(ngModel)]="privilege.name"  autofocus
-            formControlName="privilegeName"/>
+            <input type="text" pInputText id="name"
+                    formControlName="privilegeName"/>
         </div>
     </ng-template>
     <ng-template pTemplate="footer">

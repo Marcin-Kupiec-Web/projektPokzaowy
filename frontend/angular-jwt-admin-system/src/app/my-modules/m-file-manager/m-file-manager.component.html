@@ -30,10 +30,12 @@
   <div class="file-manager-uploaded" *ngIf="announcement.announcementsImagesCollection">
     <div class="file-manager-uploaded-img" *ngFor="let image of announcement.announcementsImagesCollection" >
       <img src="data:image/png;base64,{{image.source}}" class="rounded-circle" (click)="openFileManagerDialog(image)">
-        <button pButton  type="button"  label="X"
-                      (click)="deleteSelectedImg(image.id)"
-                      class="p-button-raised p-button-danger p-button-sm"
-                       style="width: 25px;padding:1px"></button>
+
+            <button pButton  type="button"  label="X"
+                          (click)="deleteSelectedImg(image.id)"
+                          class="p-button-raised p-button-danger p-button-sm"
+                          style="width: 25px;padding:1px"></button>
+
     </div>
   </div>
 </div>

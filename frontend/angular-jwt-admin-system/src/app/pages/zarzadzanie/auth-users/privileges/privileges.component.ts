@@ -50,6 +50,7 @@ export class PrivilegesComponent implements OnInit, AfterViewChecked {
   editPrivilege(privilege: Privilege): void {
     this.privilege = {...privilege};
     this.privilegeDialog = true;
+    this.privilegeForm.get('privilegeName')?.setValue(this.privilege.name);
   }
 
   deletePrivilege(privilege: Privilege): void {
@@ -79,7 +80,7 @@ export class PrivilegesComponent implements OnInit, AfterViewChecked {
 
   savePrivilege(): void {
     this.submitted = true;
-
+    this.privilege.name = this.privilegeForm.value.privilegeName;
     if (this.privilege.name.trim()) {
         if (this.privilege.id) {
           this.updatePrivilege(this.privilege);

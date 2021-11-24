@@ -69,6 +69,9 @@ export class RoleComponent implements OnInit, AfterViewChecked  {
     editRola(rola: Role): void {
       this.rola = {...rola};
       this.rolaDialog = true;
+      this.rolaForm.get('rolaName')?.setValue(rola.name);
+      this.rolaForm.get('rolaPrvilege')?.setValue(this.rola.privileges);
+      this.rolaForm.get('rolaPoziomUpr')?.setValue(rola.poziomUprawnien);
     }
 
   deleteRola(rola: Role): void {
@@ -98,7 +101,9 @@ export class RoleComponent implements OnInit, AfterViewChecked  {
 
     saveRola(): void {
       this.submitted = true;
-
+      this.rola.privileges = this.rolaForm.value.rolaPrvilege;
+      this.rola.name = this.rolaForm.value.rolaName;
+      this.rola.poziomUprawnien = this.rolaForm.value.rolaPoziomUpr;
       if (this.rola.name.trim() && this.rola.privileges && this.rola.poziomUprawnien) {
           if (this.rola.id) {
             this.updateRola(this.rola);

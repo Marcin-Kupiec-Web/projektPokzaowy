@@ -66,18 +66,22 @@ styleClass="p-fluid respDialog" [contentStyle]="{overflow:'visible'}" [formGroup
     <ng-template pTemplate="content" >
         <div class="p-field">
             <label for="name">Nazwa * </label>
-            <input type="text" pInputText id="name" [(ngModel)]="rola.name" required autofocus
-            formControlName="rolaName"/>
+            <input type="text" pInputText id="name"  required
+                   formControlName="rolaName"/>
         </div>
         <div class="p-field">
             <label for="privileges">Uprawnienia * </label>
-            <p-multiSelect [options]="privilegesSave" inputId="privileges" [(ngModel)]="rola.privileges"
-                optionLabel="name" display="chip" formControlName="rolaPrvilege" required></p-multiSelect>
+            <p-multiSelect [options]="privilegesSave"
+                          inputId="privileges"
+                          optionLabel="name" display="chip"
+                          formControlName="rolaPrvilege"
+                          required></p-multiSelect>
         </div>
         <div class="p-field">
           <label for="minmax">Poziom uprawnień * </label>
-          <p-inputNumber [(ngModel)]="rola.poziomUprawnien" inputId="minmax" inputId="minmax"
-          mode="decimal" [min]="1" [max]="10" formControlName="rolaPoziomUpr">
+          <p-inputNumber inputId="minmax" inputId="minmax"
+                         mode="decimal" [min]="1" [max]="10"
+                         formControlName="rolaPoziomUpr">
           </p-inputNumber>
       </div>
     </ng-template>

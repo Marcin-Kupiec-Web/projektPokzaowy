@@ -40,7 +40,7 @@ export class GrupyComponent implements OnInit {
 
       this.groupForm = new FormGroup({
         groupName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(60)]),
-        groupShortName: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(10)]),
+        groupShortName: new FormControl('', [Validators.required, Validators.minLength(1), Validators.maxLength(20)]),
         groupDescription: new FormControl(''),
       });
 
@@ -50,6 +50,9 @@ export class GrupyComponent implements OnInit {
 editGroup(group: Grupa): void {
   this.group = {...group};
   this.groupDialog = true;
+  this.groupForm.get('groupName')?.setValue(this.group.name);
+  this.groupForm.get('groupShortName')?.setValue(this.group.shortName);
+  this.groupForm.get('groupDescription')?.setValue(this.group.description);
 }
 
 deleteGroup(group: Grupa): void {
@@ -79,6 +82,9 @@ deleteSelectedGroups(): void {
 
 saveGroup(): void {
   this.submitted = true;
+  this.group.description = this.groupForm.value.groupDescription;
+  this.group.name = this.groupForm.value.groupName;
+  this.group.shortName = this.groupForm.value.groupShortName;
 
   if (this.group.name.trim() && this.group.shortName) {
       if (this.group.id) {

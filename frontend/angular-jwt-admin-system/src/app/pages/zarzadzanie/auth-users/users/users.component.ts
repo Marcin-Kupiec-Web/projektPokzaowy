@@ -87,10 +87,19 @@ export class UsersComponent implements OnInit, AfterViewChecked {
   editUser(user: User): void {
       this.user = {...user};
       this.userDialog = true;
+      this.userForm.get('nameUser')?.setValue(this.user.username);
+      this.userForm.get('groupUser')?.setValue(this.user.grupa);
+      this.userForm.get('roleUser')?.setValue(this.user.roleCollection);
+      this.userForm.get('enableUser')?.setValue(this.user.enabled);
     }
 
   saveUser(): void {
       this.submitted = true;
+      this.user.enabled = this.userForm.value.enableUser;
+      this.user.password = this.userForm.value.passUser;
+      this.user.grupa = this.userForm.value.groupUser;
+      this.user.roleCollection = this.userForm.value.roleUser;
+      this.user.username = this.userForm.value.nameUser;
 
       if (this.user.username.trim() && this.user.password && this.user.roleCollection && this.user.grupa) {
         let findUser: User | undefined;

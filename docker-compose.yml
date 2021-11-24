@@ -1,0 +1,58 @@
+version: "3.7"
+services:
+
+  phpmyadmin:
+    container_name: phpmyadminSzef
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - 8082:80
+    networks:
+      - backendNetworkJWT
+      
+  db:
+    container_name: dbJWT
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_DATABASE: systemJWT
+      MYSQL_USER: userJWT
+      MYSQL_PASSWORD: ala#tola
+      MYSQL_ROOT_PASSWORD: ala#12tola
+    ports:
+      - 3308:3306
+    command: --init-file /docker-entrypoint-initdb.d/setup.sql
+    volumes:
+      - db-jwtvol:/var/lib/mysql
+      - .docker/setup.sql:/docker-entrypoint-initdb.d/setup.sql
+    networks:
+      - backendNetworkJWT
+      
+  frontend:
+    build: ./frontend/angular-jwt-admin-system/
+    ports:
+      - 4201:4200
+      - 49153:49153
+    volumes:
+      - "/app/node_modules"
+      - "./frontend/angular-jwt-admin-system:/app"
+    networks:
+      - frontendNetworkJWT
+      
+  backend:
+    build: ./backend/spring-jwt-admin-system/
+    ports:
+      - 8081:8081
+    volumes:
+      - "./backend/spring-jwt-admin-system/target/classes/com:/app/com"
+    depends_on:
+      - db
+    networks:
+      - frontendNetworkJWT
+      - backendNetworkJWT
+
+volumes:
+  db-jwtvol:
+networks:
+  backendNetworkJWT:
+  frontendNetworkJWT:
+

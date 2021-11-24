@@ -34,8 +34,10 @@ export class LoginComponent implements OnInit {
 
     // ---------------------------------- click zaloguj --------------------------------
   onLogin(): void {
-    this.authenticationService.authenticationService(this.username, this.password).subscribe((data) => {
+    this.username = this.signin.value.username;
+    this.password = this.signin.value.password;
 
+    this.authenticationService.authenticationService(this.username, this.password).subscribe((data) => {
         this.router.navigate(['/start']);
       }, () => {this.authenticationService.logout();
       });

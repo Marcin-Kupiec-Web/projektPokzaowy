@@ -28,7 +28,7 @@
                 <div style=" display: flex;width: 80%;white-space: nowrap;justify-content: end;">
                     <p-button icon="pi pi-plus" (click)="openNew()"
                     styleClass="p-button-sm p-button-success buttonRespon mr-2" *ngIf="hasRole(['MODERATOR', 'ADMIN'])"></p-button>
-                    <p-dataViewLayoutOptions class="optionsDataView" ></p-dataViewLayoutOptions>
+                    <!-- <p-dataViewLayoutOptions class="optionsDataView" ></p-dataViewLayoutOptions>-->
                 </div>
             </div>
         </ng-template>
@@ -73,17 +73,17 @@
                         <i class="pi pi-clock announcement-category-icon"></i>
                         <span class="announcement-user">{{announcement.date | date:'dd/MM/yy H:mm'}}</span>
                     </div>
-                    <div [routerLink]="['/announcement-details',announcement.id]">
-                            <div *ngIf="announcement.announcementsImagesCollection">
+                    <div [routerLink]="['/announcement-details',announcement.id]" >
+                            <div *ngIf="announcement.announcementsImagesCollection" class='header'>
                               <div *ngFor="let image of announcement.announcementsImagesCollection" >
                                 <img src="data:image/png;base64,{{image.source}}" *ngIf="image.main">
                               </div>
                             </div>
                         <div class="announcement-grid-item-content p-p-2" [ngClass] = "{'moreContent': announcement.announcementsImagesCollection.length === 0}">
                             <div class="announcement-title">{{announcement.title}}</div>
-                            <div class="announcement-description" *ngIf="announcement.announcementsImagesCollection.length > 0">{{announcement.description.substr(0,320).substr(0,announcement.description.substr(0,320).lastIndexOf(" "))}}...</div>
-                            <div class="announcement-description" *ngIf="announcement.announcementsImagesCollection.length === 0" >{{announcement.description.substr(0,700).substr(0,announcement.description.substr(0,650).lastIndexOf(" "))}}...</div>
-                          </div>
+                            <div class="announcement-description" *ngIf="announcement.announcementsImagesCollection.length > 0">{{announcement.description.substr(0,120).substr(0,announcement.description.substr(0,120).lastIndexOf(" "))}}</div>
+                            <div class="announcement-description" *ngIf="announcement.announcementsImagesCollection.length === 0" >{{announcement.description.substr(0,410).substr(0,announcement.description.substr(0,410).lastIndexOf(" "))}}</div>
+                        </div>
                   </div>
                     <div class="announcement-item-bottom" *ngIf="checkUser(announcement.user.id)">
                         <!--<span class="announcement-user">{{announcement.user.username}}</span>-->
