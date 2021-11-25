@@ -20,6 +20,11 @@ export class SideNavComponent implements OnInit, AfterViewInit {
 
     this.sideNawItems = [
       {
+        label: 'Start',
+        icon: 'pi pi-pw pi-home',
+        routerLink: ['/start'],
+      },
+      {
           label: 'Administracja',
           icon: 'pi pi-pw pi-cog',
           expanded: this.checkActiveState(['/users', '/roles', '/privileges', '/groups', '/rejestry']),
@@ -54,9 +59,8 @@ export class SideNavComponent implements OnInit, AfterViewInit {
                 icon: 'pi pi-fw pi-clock',
                 routerLink: ['rejestry'],
                 id: 'rejestry'
-              },
-              {separator: true},
-              {label: 'Wyloguj', icon: 'pi pi-fw pi-times', url: '/#/login'}
+              }
+
           ]
       },
       {
@@ -82,10 +86,15 @@ export class SideNavComponent implements OnInit, AfterViewInit {
                       {
                           label: 'User',
                           icon: 'pi pi-fw pi-file',
-                      }
+                      },
               ]}
           ]
-      }
+
+      },
+      {label: 'Wyloguj',
+      icon: 'pi pi-fw pi-times',
+      url: '/#/login',
+      styleClass: 'ble'}
   ];
 
   }

@@ -5,13 +5,20 @@
     min-width: 145px;
     height: 50px;
     top:0px;
-    background-color: #0097a7;
+    background-color: #0096a773;
     z-index:2;
     transition:all 0.5s;
+    display: flex;
+
+    .btn-home{
+      background-color: rgba(13, 46, 95, 0.411);
+      border: none;
+      border-radius: 0;
+    }
   }
 .loginPage{
     position:fixed;
-    background-color: darkslategray;
+    background-color: rgb(49, 121, 180);
     width: 100%;
     height: 100vh;
 }

@@ -48,8 +48,8 @@ color: crimson;
   .sidebar.responsiveSidebar{
             width: 0px;
     }
-
 }
+
 .p-widget li.p-menptem{
   background-color:#f2f2f2 !important;
   border: medium none !important;
@@ -63,28 +63,32 @@ color: crimson;
     color: whitesmoke!important;
 
   }
+
   .p-panelmenu .p-panelmenu-content{
       background-color: transparent!important;
   }
+
   .p-panelmenu .p-panelmenu-content .p-menuitem-link:hover, .p-panelmenu .p-panelmenu-header > a:hover{
-    background-color:transparent!important;
+    background-color: rgba(10, 93, 202, 0.342)!important;
     padding-left:9px!important
   }
 
   .p-panelmenu .p-panelmenu-header > a {
-    background: rgba(1, 71, 136, 0.568)!important;
+    background: rgba(1, 71, 136, 0.438)!important;
     border:none;
     border-radius: 0!important;
   }
+
   .p-panelmenu *{
     font-size: 0.9rem;
   }
+
   .p-panelmenu .p-panelmenu-header > a:focus {
     outline: 0 none;
     outline-offset: 0;
     box-shadow: 0 0 0 0 orange;
-
   }
+
   .p-panelmenu .p-panelmenu-content .p-menuitem .p-menuitem-link, .p-panelmenu .p-panelmenu-header > a {
     transition: 0.2s;
   }
@@ -99,7 +103,11 @@ color: crimson;
     border-right:3px solid tomato!important;
     font-weight:700;
   }
-
+ .ble{
+   margin-top:30px;
+   border-top:1px solid rgb(115, 173, 190);
+   border-bottom:0.1px solid rgb(115, 173, 190);
+ }
 }
 
 

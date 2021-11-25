@@ -53,7 +53,9 @@ export class RoleComponent implements OnInit, AfterViewChecked  {
           this.roles = this.restData['rlm'];
           // tslint:disable-next-line:no-string-literal
           this.privilegesSave = this.restData['plm'];
-          this.loading = false;
+          setTimeout(() =>{
+            this.loading = false;
+          },300);
        }, error => {this.loading = false; });
 
           this.rolaForm = new FormGroup({

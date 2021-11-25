@@ -62,8 +62,9 @@ export class UsersComponent implements OnInit, AfterViewChecked {
               this.users = this.restData['usersList'];
               // tslint:disable-next-line:no-string-literal
               this.roles = this.restData['rlm'];
-              this.loading = false;
-
+              setTimeout(() =>{
+                this.loading = false;
+              },300);
           }, error => {this.loading = false; });
 
             this.grupaService.findAll().subscribe(data => {
@@ -91,6 +92,7 @@ export class UsersComponent implements OnInit, AfterViewChecked {
       this.userForm.get('groupUser')?.setValue(this.user.grupa);
       this.userForm.get('roleUser')?.setValue(this.user.roleCollection);
       this.userForm.get('enableUser')?.setValue(this.user.enabled);
+      this.userForm.get('passUser')?.setValue(this.user.password);
     }
 
   saveUser(): void {

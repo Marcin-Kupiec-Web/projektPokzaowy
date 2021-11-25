@@ -19,8 +19,11 @@
     text-decoration: none;
     font-size: 17px;
     transition: 0.5s;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
   }
-
+.activeLink{
+  background-color: rgba(30, 56, 97, 0.301);
+}
   .sideBarOpenSmall{
     float:left;
   }
@@ -30,7 +33,7 @@
   }
 
   .topnav a:hover {
-    background-color: rgba(194, 212, 241, 0.459);
+    background-color: rgba(30, 56, 97, 0.301);
   }
 
   .topnav .menuBarOpenSmall{

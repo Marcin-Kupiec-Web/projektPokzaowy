@@ -38,7 +38,9 @@ export class PrivilegesComponent implements OnInit, AfterViewChecked {
         this.privilegesService.findAll().subscribe(data => {
         // tslint:disable-next-line:no-string-literal
         this.privileges = data;
-        this.loading = false;
+        setTimeout(() =>{
+          this.loading = false;
+        },300);
    }, error => {this.loading = false; });
         this.privilegeForm = new FormGroup({
     privilegeName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(60)])

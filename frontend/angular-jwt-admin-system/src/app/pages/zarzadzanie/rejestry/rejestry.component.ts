@@ -24,7 +24,9 @@ loading = true;
     this.translateLang('pl');
     this.rejestryService.findAll().subscribe(data => {
       this.rejestry = data;
-      this.loading = false;
+      setTimeout(() =>{
+        this.loading = false;
+      },300);
     }, error => {this.loading = false; });
 
   }

@@ -35,7 +35,9 @@ export class GrupyComponent implements OnInit {
   ngOnInit(): void {
       this.grupaService.findAll().subscribe(data => {
         this.groups = data;
-        this.loading = false;
+        setTimeout(() =>{
+          this.loading = false;
+        },300);
   }, error => {this.loading = false; });
 
       this.groupForm = new FormGroup({
